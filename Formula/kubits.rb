@@ -3,9 +3,9 @@ class Kubits < Formula
   homepage 'todo'
   url 'git@github.com:pantheon-systems/kubits.git',
     using: :git,
-    tag: 'v0.0.4'
+    tag: 'v0.0.5'
 
-	head 'https://github.com/pantheon-systems/kubits.git'
+  head 'https://github.com/pantheon-systems/kubits.git'
 
   bottle :unneeded
 
