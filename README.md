@@ -11,8 +11,8 @@ Install
 
 ### macOS:
 
-Because this is a private github repo, we need to use the brew-tap form: `brew tap user/repo URL`
-where `URL` is the ssh URL to this repo.
+Because this is a private github repo, we need to use the brew-tap form
+`brew tap user/repo URL` where `URL` is the ssh URL to this repo:
 
     $ brew tap pantheon-systems/kubits git@github.com:pantheon-systems/kubits.git
     $ brew install pantheon-systems/kubits/kubits
@@ -20,7 +20,7 @@ where `URL` is the ssh URL to this repo.
 Upgrading:
 
     $ brew update
-    $ berw upgrade pantheon-systems/kubits/kubits
+    $ brew upgrade pantheon-systems/kubits/kubits
 
 ### Linux:
 
@@ -69,8 +69,25 @@ These are installed automatically when installing via homebrew.
 Developing
 ==========
 
-Version bump:
+Making changes + bumping version:
+
+1. Make your branch: `git checkout -b feature-name`
+2. Edit `Formula/kubits.rb` bump version in `tag:`
+3. Make your edits, commit them: `git commit -a`
+4. Create new version tag: `git tag v0.0.4` (this must match the tag: in `Formula/kubits.rb`)
+5. Push your branch: `git push origin feature-name`
+6. Open a pull request, get code review, merge to master
+7. After merged to master, you can test your update is available by running the
+   upgrade procedure: `brew update && brew upgrade pantheon-systems/kubits/kubits`
+
+Only bumping version:
 
 1. Edit `./Formula/kubits.rb` update `tag`, eg `v0.0.4`
 2. Make git tag: `git tag v0.0.4`
 3. Push tag: `git push --tags`
+
+TODO
+----
+
+- [ ] include helpers for adding cluster+namespace to bash and zsh prompts
+- [ ] add circle-ci? add shellcheck for linting?
