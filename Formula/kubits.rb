@@ -3,7 +3,7 @@ class Kubits < Formula
   homepage 'todo'
   url 'git@github.com:pantheon-systems/kubits.git',
     using: :git,
-    tag: 'v0.0.3'
+    tag: 'v0.0.4'
 
 	head 'https://github.com/pantheon-systems/kubits.git'
 

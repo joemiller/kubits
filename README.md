@@ -69,10 +69,8 @@ These are installed automatically when installing via homebrew.
 Developing
 ==========
 
-To push a new version:
+Version bump:
 
-1. Make changes, commit to branch
-2. Push branch, get code review, merge to master
-3. Edit `./Formula/kubits.rb` update `tag`, eg `v0.0.4`
-4. Make git tag: `git tag v0.0.4`
-5. Push tag: `git push --tags`
+1. Edit `./Formula/kubits.rb` update `tag`, eg `v0.0.4`
+2. Make git tag: `git tag v0.0.4`
+3. Push tag: `git push --tags`
