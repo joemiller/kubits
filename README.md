@@ -73,20 +73,15 @@ Making changes + bumping version:
 
 1. Make your branch: `git checkout -b feature-name`
 2. Make your edits, commit them: `git commit -a`
-3. Edit `Formula/kubits.rb` bump version in `tag:`
+3. Edit `Formula/kubits.rb` bump version in `tag: v0.0.4`
 5. Commit: `git commit -a`
-5. Create new version tag: `git tag v0.0.4` (this must match the tag: in `Formula/kubits.rb`)
+5. Create new tag: `git tag v0.0.4` (this must match the tag: in `Formula/kubits.rb`)
 6. Push your branch: `git push origin feature-name`
-7. Push tag: `git push --tags`
+7. Push your tag: `git push --tags`
 8. Open a pull request, get code review, merge to master
-9. After merge to master you can test your update is available by running the
-   upgrade procedure: `brew update && brew upgrade pantheon-systems/kubits/kubits`
 
-Only bumping version:
-
-1. Edit `./Formula/kubits.rb` update `tag`, eg `v0.0.4`
-2. Make git tag: `git tag v0.0.4`
-3. Push tag: `git push --tags`
+After merged to master, you can test your update is available by running the
+normal upgrade procedure: `brew update && brew upgrade pantheon-systems/kubits/kubits`
 
 TODO
 ----
