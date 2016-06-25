@@ -19,7 +19,8 @@ where `URL` is the ssh URL to this repo.
 
 Upgrading:
 
-    $ brew rm pantheon-systems/kubits/kubits
+    $ brew update
+    $ brew uninstall pantheon-systems/kubits/kubits
     $ brew install pantheon-systems/kubits/kubits --HEAD
 
 ### Linux:

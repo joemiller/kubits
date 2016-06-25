@@ -1,11 +1,9 @@
 class Kubits < Formula
   desc 'utilities for working kubernetes clusters'
   homepage 'todo'
-  #url 'https://github.com/pantheon-systems/kubits/archive/v0.0.1.tar.gz'
-  #sha256 'todo'
-  url 'git://github.com:pantheon-systems/kubits.git',
-    tag: 'v0.0.1' #,
-    #revision: "30cd70a45b6659ad9c571468ae6c49f38142dd5f"
+  url 'git@github.com:pantheon-systems/kubits.git',
+    using: :git,
+    tag: 'v0.0.1'
 
 	head 'https://github.com/pantheon-systems/kubits.git'
 
