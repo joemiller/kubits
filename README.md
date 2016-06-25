@@ -77,8 +77,9 @@ Making changes + bumping version:
 5. Commit: `git commit -a`
 5. Create new version tag: `git tag v0.0.4` (this must match the tag: in `Formula/kubits.rb`)
 6. Push your branch: `git push origin feature-name`
-7. Open a pull request, get code review, merge to master
-8. After merge to master you can test your update is available by running the
+7. Push tag: `git push --tags`
+8. Open a pull request, get code review, merge to master
+9. After merge to master you can test your update is available by running the
    upgrade procedure: `brew update && brew upgrade pantheon-systems/kubits/kubits`
 
 Only bumping version:
