@@ -17,9 +17,22 @@ where `URL` is the ssh URL to this repo.
     $ brew tap pantheon-systems/kubits git@github.com:pantheon-systems/kubits.git
     $ brew install pantheon-systems/kubits/kubits --HEAD
 
+Upgrading:
+
+    $ brew rm pantheon-systems/kubits/kubits
+    $ brew install pantheon-systems/kubits/kubits --HEAD
+
 ### Linux:
 
 TODO
+
+Uninstall
+---------
+
+### macOS:
+
+    $ brew uninstall pantheon-systems/kubits/kubits
+    $ brew untap brew uninstall pantheon-systems/kubits
 
 Usage
 -----
