@@ -1,0 +1,10 @@
+#!/bin/sh
+# vim: set ft=sh:
+
+# set cluster
+
+if [ -z "$1" ]; then
+    # list available clusters
+    exec kubectl config view -o template --template='{{range .users}}{{.name}}{{println " "}}{{end}}'
+fi
+exec kubectl config use-context "$1"

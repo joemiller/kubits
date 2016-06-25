@@ -1,0 +1,10 @@
+#!/bin/sh
+# vim: set ft=sh:
+
+# set default namespace
+
+if [ -z "$1" ] ; then
+    exec kubectl get namespaces
+fi
+context=$(kubectl config current-context)
+exec kubectl config set-context "$context" --namespace="$1"
