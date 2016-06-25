@@ -15,13 +15,12 @@ Because this is a private github repo, we need to use the brew-tap form: `brew t
 where `URL` is the ssh URL to this repo.
 
     $ brew tap pantheon-systems/kubits git@github.com:pantheon-systems/kubits.git
-    $ brew install pantheon-systems/kubits/kubits --HEAD
+    $ brew install pantheon-systems/kubits/kubits
 
 Upgrading:
 
     $ brew update
-    $ brew uninstall pantheon-systems/kubits/kubits
-    $ brew install pantheon-systems/kubits/kubits --HEAD
+    $ berw upgrade pantheon-systems/kubits/kubits
 
 ### Linux:
 
@@ -33,7 +32,7 @@ Uninstall
 ### macOS:
 
     $ brew uninstall pantheon-systems/kubits/kubits
-    $ brew untap brew uninstall pantheon-systems/kubits
+    $ brew untap pantheon-systems/kubits
 
 Usage
 -----
@@ -66,3 +65,14 @@ BASH / ZSH completion
 
 Completion helpers are available for both BASH and ZSH in the `./completions` directory.
 These are installed automatically when installing via homebrew.
+
+Developing
+==========
+
+To push a new version:
+
+1. Make changes, commit to branch
+2. Push branch, get code review, merge to master
+3. Edit `./Formula/kubits.rb` update `tag`, eg `v0.0.4`
+4. Make git tag: `git tag v0.0.4`
+5. Push tag: `git push --tags`
