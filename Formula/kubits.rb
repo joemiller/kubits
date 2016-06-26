@@ -3,7 +3,7 @@ class Kubits < Formula
   homepage 'https://github.com/pantheon-systems/kubits'
   url 'git@github.com:pantheon-systems/kubits.git',
     using: :git,
-    tag: 'v0.0.5'
+    tag: 'v0.0.6'
 
   # TODO: when we switch to a public github repo, use https tarball url method instead, example:
   #   url 'https://github.com/pantheon-systems/kubits/archive/v0.0.5.tar.gz'
