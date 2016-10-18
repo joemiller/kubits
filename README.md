@@ -111,16 +111,29 @@ These are installed automatically when installing via homebrew.
 Developing
 ==========
 
-Making changes + bumping version:
+Making changes
+--------------
 
 1. Make your branch: `git checkout -b feature-name`
 2. Make your edits.
-3. Edit `Formula/kubits.rb` bump version in `tag: 'v0.0.4'`
-5. Commit everything: `git commit -a`
-5. Create new tag: `git tag v0.0.4` (this must match the tag: in `Formula/kubits.rb`)
-6. Push your branch: `git push origin feature-name`
-7. Push your tag: `git push --tags`
-8. Open a pull request, get code review, merge to master
+3. Commit to branch, send PR
+4. Merge to master after code-review process.
+5. Create
+
+Updating homebrew Formula
+-------------------------
+
+This process assumes
+
+1. Make your branch: `git checkout -b feature-name`
+2. Make your edits.
+3. Update `CHANGELOG.md`
+4. Update `README.md` (if applicable)
+5. Commit updates to branch.
+6. Create new tag: `git tag v0.0.4`
+7. Push your branch: `git push origin feature-name`
+8. Push your tag: `git push --tags`
+9. Open a pull request, get code review, merge to master
 
 After merge to master you can test your update is available by running the
 normal upgrade procedure: `brew update && brew upgrade joemiller/kubits/kubits`
@@ -130,6 +143,6 @@ TODO
 
 - [ ] include helpers for adding cluster+namespace to bash and zsh prompts
 - [ ] add circle-ci? add shellcheck for linting?
-- [ ] make public repo? If so, then we should switch the homebrew formula to use
+- [x] make public repo? If so, then we should switch the homebrew formula to use
       a url to the github release tarball as is common practice for most public
       brews. Also the instructions for adding the tap can be shortened to remove the URL.
