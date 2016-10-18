@@ -1,6 +1,22 @@
 kubits
 ======
 
+<!-- toc -->
+
+  * [Install](#install)
+    + [macOS:](#macos)
+    + [Linux:](#linux)
+  * [Uninstall](#uninstall)
+    + [macOS:](#macos-1)
+  * [Usage](#usage)
+    + [kube-cluster](#kube-cluster)
+    + [kube-ns](#kube-ns)
+  * [BASH / ZSH completion](#bash--zsh-completion)
+- [Developing](#developing)
+  * [TODO](#todo)
+
+<!-- tocstop -->
+
 Collection of utilities to improve working with Kubernetes clusters.
 
 NOTE: This is currently a private github repo, though there is nothing specific
