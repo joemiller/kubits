@@ -30,12 +30,13 @@ Install
 
 Install:
 
-    $ brew install joemiller/kubits/kubits
+    $ brew tap joemiller/kubits https://github.com/joemiller/kubits
+    $ brew install kubits
 
 Upgrading:
 
     $ brew update
-    $ brew upgrade joemiller/kubits/kubits
+    $ brew upgrade kubits
 
 ### Linux:
 
