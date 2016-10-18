@@ -1,7 +1,7 @@
 class Kubits < Formula
   desc 'utilities for working kubernetes clusters'
   homepage 'https://github.com/joemiller/kubits'
-  url 'git@github.com:joemiller/kubits.git',
+  url 'https://github.com/joemiller/kubits.git',
     using: :git,
     tag: 'v0.0.6'
 

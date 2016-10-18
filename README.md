@@ -11,6 +11,7 @@ kubits
   * [Usage](#usage)
     + [kube-cluster](#kube-cluster)
     + [kube-ns](#kube-ns)
+    + [kube-tail](#kube-tail)
   * [BASH / ZSH completion](#bash--zsh-completion)
 - [Developing](#developing)
   * [TODO](#todo)
@@ -73,6 +74,33 @@ List and set the current namespace:
     production    Active    70d
 
     $ kube-ns development
+
+### kube-tail
+
+Tail the logs from multiple pods and containers in a single command.
+
+Each container's output is prefixed with the pod and container the originated
+the log line.
+
+Output is colored for improved readability.
+
+Loosely inspired by the Heroku toolbelt's log tail function.
+
+`kube-tail` accepts two arguments:
+
+1. Label selector. This is passed directly to the `-l | --selector` option of
+   `kubectl`
+2. Namespace. The namespace to query for pods. Defaults to `default` namespace
+
+In this example, there is a single pod with two containers, nginx and myapp:
+
+    $ kubectl get pods -l app=myapp --namespace=production
+    NAME                                    READY     STATUS    RESTARTS   AGE
+    myapp-11345623-gj2mr                    2/2       Running   0          2d
+
+    $ kube-tail app=myapp production
+    |myapp-11345623-gj2mr::nginx | 10.240.0.9 - - [18/Oct/2016:17:56:15 +0000] "GET /api/5bb0c1a8-0ad9-bcee-d3d3-f541bd3e7559/ HTTP/1.1" 200 3918 "-"
+    |myapp-11345623-gj2mr::myapp | time="2016-10-18T17:36:29Z" level=info msg="New connection" clientIP=127.0.0.1:37768 conID=0dff04c5-4fa9-436c-8c08-f58d2b4e1e24
 
 BASH / ZSH completion
 ---------------------
