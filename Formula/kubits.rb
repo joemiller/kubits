@@ -4,7 +4,7 @@ class Kubits < Formula
   url 'https://github.com/joemiller/kubits/archive/v0.0.7.tar.gz'
   sha256 '73322e477cae0add3b38f70eb8c619b9bb578f9e7dfdd0c22bdedfb8cbede754'
 
-  head 'https://github.com/joemiller/kubits.git'
+  # head 'https://github.com/joemiller/kubits.git'
 
   bottle :unneeded
 
