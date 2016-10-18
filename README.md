@@ -111,29 +111,25 @@ These are installed automatically when installing via homebrew.
 Developing
 ==========
 
-Making changes
---------------
+Submitting changes
+------------------
 
 1. Make your branch: `git checkout -b feature-name`
 2. Make your edits.
 3. Commit to branch, send PR
-4. Merge to master after code-review process.
-5. Create
+4. Update `CHANGELOG.md`
+5. Update `README.md` (if applicable)
+6. Merge to master after code-review process.
 
-Updating homebrew Formula
+Updating Homebrew Formula
 -------------------------
 
-This process assumes
-
-1. Make your branch: `git checkout -b feature-name`
-2. Make your edits.
-3. Update `CHANGELOG.md`
-4. Update `README.md` (if applicable)
-5. Commit updates to branch.
-6. Create new tag: `git tag v0.0.4`
-7. Push your branch: `git push origin feature-name`
-8. Push your tag: `git push --tags`
-9. Open a pull request, get code review, merge to master
+1. Create new tag: `git tag v0.0.7`
+2. Push tag to github: `git push --tags`
+3. Get the sha256 checksum from the tag tarball: `curl -L https://github.com/joemiller/kubits/archive/v0.0.7.tar.gz | sha256sum`
+4. Edit `Formula/kubits.rb`, update `url` and `sha256`
+5. Commit updated `Formula/kubits.rb` to master (@TODO(joe): maybe do it on a branch for safety/consistency)
+6. `git push origin master`
 
 After merge to master you can test your update is available by running the
 normal upgrade procedure: `brew update && brew upgrade joemiller/kubits/kubits`
