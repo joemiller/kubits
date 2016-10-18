@@ -11,16 +11,14 @@ Install
 
 ### macOS:
 
-Because this is a private github repo, we need to use the brew-tap form
-`brew tap user/repo URL` where `URL` is the ssh URL to this repo:
+Install:
 
-    $ brew tap pantheon-systems/kubits git@github.com:pantheon-systems/kubits.git
-    $ brew install pantheon-systems/kubits/kubits
+    $ brew install joemiller/kubits/kubits
 
 Upgrading:
 
     $ brew update
-    $ brew upgrade pantheon-systems/kubits/kubits
+    $ brew upgrade joemiller/kubits/kubits
 
 ### Linux:
 
@@ -31,8 +29,8 @@ Uninstall
 
 ### macOS:
 
-    $ brew uninstall pantheon-systems/kubits/kubits
-    $ brew untap pantheon-systems/kubits
+    $ brew uninstall joemiller/kubits/kubits
+    $ brew untap joemiller/kubits
 
 Usage
 -----
@@ -81,7 +79,7 @@ Making changes + bumping version:
 8. Open a pull request, get code review, merge to master
 
 After merge to master you can test your update is available by running the
-normal upgrade procedure: `brew update && brew upgrade pantheon-systems/kubits/kubits`
+normal upgrade procedure: `brew update && brew upgrade joemiller/kubits/kubits`
 
 TODO
 ----

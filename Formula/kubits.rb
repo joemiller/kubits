@@ -1,15 +1,15 @@
 class Kubits < Formula
   desc 'utilities for working kubernetes clusters'
-  homepage 'https://github.com/pantheon-systems/kubits'
-  url 'git@github.com:pantheon-systems/kubits.git',
+  homepage 'https://github.com/joemiller/kubits'
+  url 'git@github.com:joemiller/kubits.git',
     using: :git,
     tag: 'v0.0.6'
 
   # TODO: when we switch to a public github repo, use https tarball url method instead, example:
-  #   url 'https://github.com/pantheon-systems/kubits/archive/v0.0.5.tar.gz'
+  #   url 'https://github.com/joemiller/kubits/archive/v0.0.5.tar.gz'
   #   sha256 '...checksum here...'
 
-  head 'https://github.com/pantheon-systems/kubits.git'
+  head 'https://github.com/joemiller/kubits.git'
 
   bottle :unneeded
 
