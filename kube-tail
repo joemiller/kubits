@@ -1,0 +1,75 @@
+#!/bin/bash
+#
+
+set -eou pipefail
+
+ESC=$(printf '\033')
+# set of colors for output. We rotate through them and re-use.
+COLORS=("[31m" "[32m" "[33m" "[34m" "[35m") # TODO: MORE COLORS!
+RESET_COLOR="[0m"
+
+# helpers
+usage() {
+  echo "Usage: $0 label=value <kubectl-args>"
+  echo
+  echo "Only options allowed by 'kubectl get' are allowed in <kubectl-args>. Eg: '--namespace=FOO'"
+  # TODO: make --timestamps optional
+}
+
+shutdown(){
+  echo "Stopping"
+  trap - SIGINT SIGTERM  # reset handler to avoid loops
+  kill -TERM 0
+}
+
+# this func uses a go-template to print a newline terminated list of "pod:container"
+# for example, a pod named 'foo' with containers 'nginx, app, proxy' would render as:
+#  foo:nginx
+#  foo:app
+#  foo:proxy
+list_containers() {
+  local selector="$1"
+  local namespace="$2"
+  kubectl get pod -l "$selector" "--namespace=$namespace" \
+    -o go-template='{{ range .items }}{{$pod := .metadata.name}}{{ range .spec.containers }}{{$pod}}{{":"}}{{.name}}{{"\n"}}{{ end }}{{ end }}'
+}
+
+main() {
+  local selector="${1:-}"
+  local namespace="${2:-default}"
+
+  if [[ -z "$selector" ]]; then
+    usage
+    exit 1
+  fi
+
+  # ensure we cleanup the `kubectl logs -f` procs that will be fork'd (&)
+  trap shutdown SIGINT SIGTERM
+
+  # for each container in each matching pod, start a `kubectl logs -f ... &`
+  local cnt=0
+  for i in $(list_containers "$selector" "$namespace"); do
+    local pod=''
+    local container=''
+    pod=$(awk -F: '{print $1}' <<< "$i")
+    container=$(awk -F: '{print $2}' <<< "$i")
+
+    # pick a color from the $COLORS array
+    local color_idx=$(( cnt % ${#COLORS[@]} ))
+    local color="${COLORS[$color_idx]}"
+
+    # created a fixed length prefix containing the container name for each line of log output
+    local line_prefix=''
+    line_prefix=$(printf "|%-25s | " "$pod::$container")
+
+    (kubectl logs --tail=10 --timestamps=false --follow -c "$container" "$pod" "--namespace=$namespace" 2>&1 \
+       | sed "s/^/${ESC}${color}${line_prefix}/; s/$/${ESC}${RESET_COLOR}/") &
+
+    cnt=$((cnt + 1))
+  done
+
+  # wait for all the forked kubectl procs
+  wait
+}
+
+main "$@"
