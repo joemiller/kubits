@@ -11,6 +11,7 @@ class Kubits < Formula
   def install
     bin.install 'kube-cluster'
     bin.install 'kube-ns'
+    bin.install 'kube-tail'
     zsh_completion.install 'completions/zsh/_kube-cluster.sh'
     zsh_completion.install 'completions/zsh/_kube-ns.sh'
     bash_completion.install 'completions/bash/_kube-cluster.sh'
