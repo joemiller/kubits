@@ -10,9 +10,18 @@ RESET_COLOR="[0m"
 
 # helpers
 usage() {
-  echo "Usage: $0 label=value <kubectl-args>"
+  echo "Usage: $0 [kubectl-get-args]"
   echo
-  echo "Only options allowed by 'kubectl get' are allowed in <kubectl-args>. Eg: '--namespace=FOO'"
+  echo "[kubectl-get-args] will be passed directly to 'kubectl get' in order to find pods and containers to tail, examples:"
+  echo
+  echo "- Tail all containers with the label 'app=hermes' in current namespace:"
+  echo "   kube-tail -l app=hermes"
+  echo
+  echo "- Tail all containers with the label 'app=hermes' in sandbox-joe namespace:"
+  echo "   kube-tail -l app=hermes --namespace=sandbox-joe"
+  echo
+  echo "- Tail all containers with the labels 'app=hermes,state=serving' in current namespace:"
+  echo "   kube-tail -l app=hermes,state=serving"
   # TODO: make --timestamps optional
 }
 
@@ -22,21 +31,19 @@ shutdown(){
   kill -TERM 0
 }
 
-# this func uses a go-template to print a newline terminated list of "pod:container"
+# this func uses a go-template to print a newline terminated list of "namespace:pod:container"
 # for example, a pod named 'foo' with containers 'nginx, app, proxy' would render as:
-#  foo:nginx
-#  foo:app
-#  foo:proxy
+#  production:foo:nginx
+#  production:foo:app
+#  production:foo:proxy
 list_containers() {
   local selector="$1"
-  local namespace="$2"
-  kubectl get pod -l "$selector" "--namespace=$namespace" \
-    -o go-template='{{ range .items }}{{$pod := .metadata.name}}{{ range .spec.containers }}{{$pod}}{{":"}}{{.name}}{{"\n"}}{{ end }}{{ end }}'
+  kubectl get pod $selector \
+    -o go-template='{{ range .items }}{{$pod := .metadata.name}}{{$ns := .metadata.namespace}}{{ range .spec.containers }}{{$ns}}{{":"}}{{$pod}}{{":"}}{{.name}}{{"\n"}}{{ end }}{{ end }}'
 }
 
 main() {
-  local selector="${1:-}"
-  local namespace="${2:-default}"
+  local selector="${*:-}"
 
   if [[ -z "$selector" ]]; then
     usage
@@ -48,11 +55,13 @@ main() {
 
   # for each container in each matching pod, start a `kubectl logs -f ... &`
   local cnt=0
-  for i in $(list_containers "$selector" "$namespace"); do
+  for i in $(list_containers "$selector"); do
+    local ns=''
     local pod=''
     local container=''
-    pod=$(awk -F: '{print $1}' <<< "$i")
-    container=$(awk -F: '{print $2}' <<< "$i")
+    ns=$(awk -F: '{print $1}' <<< "$i")
+    pod=$(awk -F: '{print $2}' <<< "$i")
+    container=$(awk -F: '{print $3}' <<< "$i")
 
     # pick a color from the $COLORS array
     local color_idx=$(( cnt % ${#COLORS[@]} ))
@@ -60,9 +69,9 @@ main() {
 
     # created a fixed length prefix containing the container name for each line of log output
     local line_prefix=''
-    line_prefix=$(printf "|%-25s | " "$pod::$container")
+    line_prefix=$(printf "|%-27s | " "$pod::$container")
 
-    (kubectl logs --tail=10 --timestamps=false --follow -c "$container" "$pod" "--namespace=$namespace" 2>&1 \
+    (kubectl logs --tail=10 --timestamps=false --follow -c "$container" "$pod" "--namespace=$ns" 2>&1 \
        | sed "s/^/${ESC}${color}${line_prefix}/; s/$/${ESC}${RESET_COLOR}/") &
 
     cnt=$((cnt + 1))
