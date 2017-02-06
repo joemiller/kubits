@@ -5,7 +5,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
-[Unreleased] - 2017-02-05
+[Unreleased] - ???
+------------------
+
+### Added:
+### Changed:
+### Fixed:
+
+[0.0.8] - 2017-02-05
 -------------------------
 
 ### Added:

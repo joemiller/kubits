@@ -118,19 +118,21 @@ Submitting changes
 1. Make your branch: `git checkout -b feature-name`
 2. Make your edits.
 3. Commit to branch, send PR
-4. Update `CHANGELOG.md`
+4. Update `CHANGELOG.md`. Describe your changes in the `[Unreleased]` section.
 5. Update `README.md` (if applicable)
 6. Merge to master after code-review process.
 
 Updating Homebrew Formula
 -------------------------
 
-1. Create new tag: `git tag v0.0.7`
-2. Push tag to github: `git push --tags`
-3. Get the sha256 checksum from the tag tarball: `curl -L https://github.com/joemiller/kubits/archive/v0.0.7.tar.gz | sha256sum`
-4. Edit `Formula/kubits.rb`, update `url` and `sha256`
-5. Commit updated `Formula/kubits.rb` to master (@TODO(joe): maybe do it on a branch for safety/consistency)
-6. `git push origin master`
+1. In `CHANGELOG.md` modify `[Unreleased]` to new version, eg: `[0.0.7]` and
+   include today's date. Create a new, empty `[Unreleased]` section.
+2. Create new tag: `git tag v0.0.7`
+3. Push tag to github: `git push --tags`
+4. Get the sha256 checksum from the tag tarball: `curl -L https://github.com/joemiller/kubits/archive/v0.0.7.tar.gz | sha256sum`
+5. Edit `Formula/kubits.rb`, update `url` and `sha256`
+6. Commit updated `Formula/kubits.rb` to master.
+7. `git push origin master`
 
 After merge to master you can test your update is available by running the
 normal upgrade procedure: `brew update && brew upgrade joemiller/kubits/kubits`
