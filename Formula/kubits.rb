@@ -1,8 +1,8 @@
 class Kubits < Formula
   desc 'utilities for working kubernetes clusters'
   homepage 'https://github.com/joemiller/kubits'
-  url 'https://github.com/joemiller/kubits/archive/v0.0.8.tar.gz'
-  sha256 '10377a7a5d9dd8739a25831887e3d75a664d94a9c179559316819fdaaa87b6c4'
+  url 'https://github.com/joemiller/kubits/archive/v0.0.9.tar.gz'
+  sha256 '5989556c9d11a37991ebd4a6469e2a98d42e89156ae8d907266373b338c78a24'
 
   # head 'https://github.com/joemiller/kubits.git'
 
@@ -12,6 +12,7 @@ class Kubits < Formula
     bin.install 'kube-cluster'
     bin.install 'kube-ns'
     bin.install 'kube-tail'
+    bin.install 'kube-dash'
     zsh_completion.install 'completions/zsh/_kube-cluster.sh'
     zsh_completion.install 'completions/zsh/_kube-ns.sh'
     bash_completion.install 'completions/bash/_kube-cluster.sh'
