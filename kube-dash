@@ -1,0 +1,9 @@
+#!/bin/sh
+# vim: set ft=sh:
+
+trap 'trap - INT TERM && kill -TERM -$$ >/dev/null 2>&1' INT TERM EXIT # ensure the script exits immediately on signal
+
+kubectl proxy >/dev/null &
+sleep 0.5
+open "http://localhost:8001/ui" &
+wait

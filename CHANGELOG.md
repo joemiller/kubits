@@ -12,6 +12,17 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 ### Changed:
 ### Fixed:
 
+[0.0.9] - 2017-03-09
+--------------------
+
+### Added:
+
+- New `kube-dash` micro-util added. Run it to open the kubernetes-dashboard
+- of the currently configured cluster in your browser. Uses `kubectl proxy`.
+
+### Changed:
+### Fixed:
+
 [0.0.8] - 2017-02-05
 -------------------------
 
