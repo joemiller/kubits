@@ -12,8 +12,11 @@ kubits
     + [kube-cluster](#kube-cluster)
     + [kube-ns](#kube-ns)
     + [kube-tail](#kube-tail)
+    + [kube-dash](#kube-dash)
   * [BASH / ZSH completion](#bash--zsh-completion)
 - [Developing](#developing)
+  * [Submitting changes](#submitting-changes)
+  * [Updating Homebrew Formula](#updating-homebrew-formula)
   * [TODO](#todo)
 
 <!-- tocstop -->
@@ -102,6 +105,18 @@ In this example, there is a single pod with two containers, nginx and myapp:
     $ kube-tail app=myapp production
     |myapp-11345623-gj2mr::nginx | 10.240.0.9 - - [18/Oct/2016:17:56:15 +0000] "GET /api/5bb0c1a8-0ad9-bcee-d3d3-f541bd3e7559/ HTTP/1.1" 200 3918 "-"
     |myapp-11345623-gj2mr::myapp | time="2016-10-18T17:36:29Z" level=info msg="New connection" clientIP=127.0.0.1:37768 conID=0dff04c5-4fa9-436c-8c08-f58d2b4e1e24
+
+### kube-dash
+
+Open the kubernetes-dashboard web UI of the currently configured cluster in your
+browser.
+
+A simple wrapper around `kubectl proxy` + `open http://localhost:8001/ui`.
+
+    $ kube-dash
+    <browser should open>
+    ctrl-C to exit
+
 
 BASH / ZSH completion
 ---------------------
