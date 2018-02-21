@@ -1,8 +1,8 @@
 class Kubits < Formula
   desc 'utilities for working kubernetes clusters'
   homepage 'https://github.com/joemiller/kubits'
-  url 'https://github.com/joemiller/kubits/archive/v0.0.9.tar.gz'
-  sha256 '93f0862f9aebf55acb7430cb74954e2fe17d0b5ce63b0b2221444c3277046472'
+  url 'https://github.com/joemiller/kubits/archive/v0.0.10.tar.gz'
+  sha256 '0a7a4b52324fb4e2a2c5ec9b7f9a1de7757a3dc7c51ad68068df886d2f9241bb'
 
   # head 'https://github.com/joemiller/kubits.git'
 
