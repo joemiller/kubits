@@ -5,12 +5,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+
 [Unreleased] - ???
-------------------
+---------------------
 
 ### Added:
 ### Changed:
 ### Fixed:
+
+[0.0.10] - 2018-02-21
+---------------------
+
+### Added:
+### Changed:
+### Fixed:
+
+- Fixed bug bash completion for `kube-ns` which would reset the namespace. Thanks
+  @winmillwill
 
 [0.0.9] - 2017-03-09
 --------------------
