@@ -136,7 +136,8 @@ Updating Homebrew Formula
 
 1. In `CHANGELOG.md` modify `[Unreleased]` to new version, eg: `[0.0.7]` and
    include today's date. Create a new, empty `[Unreleased]` section.
-2. Create new tag: `git tag v0.0.7`
+2. Commit changelog update to master and push.
+2. Create new tag, eg: `git tag v0.0.7`
 3. Push tag to github: `git push --tags`
 4. Get the sha256 checksum from the tag tarball: `curl -L https://github.com/joemiller/kubits/archive/v0.0.7.tar.gz | sha256sum`
 5. Edit `Formula/kubits.rb`, update `url` and `sha256`
