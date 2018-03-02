@@ -1,0 +1,18 @@
+---
+name: "tail"
+shortDesc: "Live tail logs from multiple pods and containers concurrently"
+longDesc: ""
+example: |
+  # Tail logs of all containers in pods containing the "app=web" label
+  kube-tail -lapp=web
+
+  # Specify namespace.
+  kube-tail -lapp=web --namespace=production
+
+  # Specify context.
+  kube-tail -lapp=web --namespace=production --context=cluster01
+command: "./kube-tail"
+flags:
+  - name: "selector"
+    shorthand: "l"
+    desc: "Selector (label query) to filter on, supports '=', '==', and '!='.(e.g. -l key1=value1,key2=value2)"

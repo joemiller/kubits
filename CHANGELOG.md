@@ -5,12 +5,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
-
 [Unreleased] - ???
 ---------------------
 
 ### Added:
 ### Changed:
+
+- `kube-tail` rewritten using the new [kubectl plguin](https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/) API.
+  This was primarily undertaken in order to better support interaction with multiple clusters
+  using  the `--context` flag. Other global flags are also supported (but untested) such as
+  `--server`, `--kubeconfig`, `--user`, etc.
+
 ### Fixed:
 
 [0.0.10] - 2018-02-21

@@ -43,7 +43,7 @@ Upgrading:
 
 ### Linux:
 
-TODO
+TODO: Support common packages, eg .deb, .rpm. In the meantime, Linuxbrew might work.
 
 Uninstall
 ---------
@@ -151,7 +151,8 @@ TODO
 ----
 
 - [ ] include helpers for adding cluster+namespace to bash and zsh prompts
-- [ ] add circle-ci? add shellcheck for linting?
+- [ ] add circle-ci? add shellcheck for linting
+- [ ] bats tests
 - [x] make public repo? If so, then we should switch the homebrew formula to use
       a url to the github release tarball as is common practice for most public
       brews. Also the instructions for adding the tap can be shortened to remove the URL.
