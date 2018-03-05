@@ -6,11 +6,18 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
 [Unreleased] - ???
----------------------
+--------------------
+
+### Added:
+### Changed:
+### Fixed:
+
+[0.1.0] - 2018-03-05
+--------------------
 
 ### Added:
 
-- Added CircleCI
+- Added CircleCI (thanks @netflash)
 - Added RPM and DEB package builds with hosting on packagecloud.io
 
 ### Changed:
