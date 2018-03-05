@@ -36,10 +36,9 @@ class Kubits < Formula
       Once installed the 'kube-tail' utility is available as 'kube-tail' in your $PATH.
       In addition, you may want to make it available via 'kubectl plugin tail' by running the following:
 
-      mkdir -p ~/.kubectl/plugins && ln -s "#{prefix}kubectl-plugins/tail" ~/.kubectl/plugins/tail
+      mkdir -p ~/.kubectl/plugins && ln -s "#{prefix}/kubectl-plugins/tail" ~/.kubectl/plugins/tail
     EOS
   end
-
 
   test do
     system "#{bin}/kube-cluster"
