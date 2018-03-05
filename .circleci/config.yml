@@ -1,0 +1,64 @@
+---
+version: 2
+
+jobs:
+  build-test:
+    working_directory: /src
+    docker:
+      - image: docker:18.02.0-ce
+
+    steps:
+      - setup_remote_docker
+      - checkout
+      - run:
+          name: add circle-specific dependencies
+          command: |
+            apk add --no-cache make bash
+      - run: make lint
+      - run: make test
+
+  packages:
+    working_directory: /src
+    docker:
+      - image: docker:18.02.0-ce
+
+    steps:
+      - setup_remote_docker
+      - checkout
+      - run:
+          name: add circle-specific dependencies
+          command: |
+            apk add --no-cache make bash ruby ruby-dev ruby-rdoc ruby-irb ruby-io-console gcc g++ make
+      - run: make packages
+      - run:
+          name: push to packagecloud.io. Requires $PACKAGECLOUD_TOKEN
+          command: |
+            gem install package_cloud --no-rdoc --no-ri
+            package_cloud push joemiller/kubits/ubuntu/xenial ./pkg/*.deb
+            package_cloud push joemiller/kubits/ubuntu/zesty ./pkg/*.deb
+            package_cloud push joemiller/kubits/ubuntu/artful ./pkg/*.deb
+            package_cloud push joemiller/kubits/ubuntu/bionic ./pkg/*.deb
+
+            package_cloud push joemiller/kubits/debian/jessie ./pkg/*.deb
+            package_cloud push joemiller/kubits/debian/stretch ./pkg/*.deb
+            package_cloud push joemiller/kubits/debian/buster ./pkg/*.deb
+
+            package_cloud push joemiller/kubits/fedora/27 ./pkg/*.rpm
+            package_cloud push joemiller/kubits/fedora/26 ./pkg/*.rpm
+
+            package_cloud push joemiller/kubits/el/6 ./pkg/*.rpm
+            package_cloud push joemiller/kubits/el/7 ./pkg/*.rpm
+
+workflows:
+  version: 2
+  build-test-push:
+    jobs:
+      - build-test
+      - packages:
+          requires:
+            - build-test
+          filters:
+            branches:
+              only:
+                - master
+                - kube-tail-as-plugin

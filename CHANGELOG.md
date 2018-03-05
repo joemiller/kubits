@@ -1,16 +1,28 @@
 kubits Change Log
 =================
 
-All notable changes to this project will be documented in this file.
+All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
-
 
 [Unreleased] - ???
 ---------------------
 
 ### Added:
+
+- Added CircleCI
+- Added RPM and DEB package builds with hosting on packagecloud.io
+
 ### Changed:
+
+- `kube-tail` rewritten using the new [kubectl plguin](https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/) API.
+  This was primarily undertaken in order to better support interaction with multiple clusters
+  using  the `--context` flag. Other global flags are also supported (but untested) such as
+  `--server`, `--kubeconfig`, `--user`, etc. Thanks to @craychee for requesting this.
+- Bumped minor version to `0.1.0` due to `kube-tail` rewrite to use kubectl-plugins interface.
+  It should be backwards-compatible for the most common (known) use cases with additional
+  features.
+
 ### Fixed:
 
 [0.0.10] - 2018-02-21

@@ -23,9 +23,6 @@ kubits
 
 Collection of utilities to improve working with Kubernetes clusters.
 
-NOTE: This is currently a private github repo, though there is nothing specific
-to Pantheon or sensitive in it. It might be easier to make this a public repo.
-
 Install
 -------
 
@@ -43,7 +40,8 @@ Upgrading:
 
 ### Linux:
 
-TODO
+Installation instructions for RPM and DEB packages available on
+[Packagecloud.io/joemiller/kubits](https://packagecloud.io/joemiller/kubits)
 
 Uninstall
 ---------
@@ -100,6 +98,8 @@ Loosely inspired by the Heroku toolbelt's log tail function.
     |myapp-11345623-gj2mr::nginx | 10.240.0.9 - - [18/Oct/2016:17:56:15 +0000] "GET /api/5bb0c1a8-0ad9-bcee-d3d3-f541bd3e7559/ HTTP/1.1" 200 3918 "-"
     |myapp-11345623-gj2mr::myapp | time="2016-10-18T17:36:29Z" level=info msg="New connection" clientIP=127.0.0.1:37768 conID=0dff04c5-4fa9-436c-8c08-f58d2b4e1e24
 
+Most global options are also supported such as `--context`.
+
 ### kube-dash
 
 Open the kubernetes-dashboard web UI of the currently configured cluster in your
@@ -120,6 +120,9 @@ These are installed automatically when installing via homebrew.
 
 Developing
 ==========
+
+- `make lint` to run linters.
+- `make test` to run tests.
 
 Submitting changes
 ------------------
@@ -151,7 +154,8 @@ TODO
 ----
 
 - [ ] include helpers for adding cluster+namespace to bash and zsh prompts
-- [ ] add circle-ci? add shellcheck for linting?
+- [x] add circle-ci? add shellcheck for linting
+- [ ] bats tests
 - [x] make public repo? If so, then we should switch the homebrew formula to use
       a url to the github release tarball as is common practice for most public
       brews. Also the instructions for adding the tap can be shortened to remove the URL.
