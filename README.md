@@ -1,6 +1,12 @@
 kubits
 ======
 
+> :warning: This project has been retired. I recommend checking out these tools as compatible alternatives. In several
+> cases these tools are even drop-in replacements with similar args as their kubits equivalents.
+>
+>  * kube-cluster / kube-ns: https://github.com/ahmetb/kubectx
+>  * kube-tail: https://github.com/wercker/stern
+
 <!-- toc -->
 
   * [Install](#install)
